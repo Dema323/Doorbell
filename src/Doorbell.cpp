@@ -8,15 +8,15 @@
 
 // You should get Auth Token in the Blynk App.
 // Go to the Project Settings (nut icon).
-char auth[] = "xxxxx";
+char auth[] = "b982a9763e0f41468dc6f433ed87454d";
 
-char ssid[] = "xxxxx";
-char pass[] = "xxxxx";
+char ssid[] = "WiFi-2.4-D4F0";
+char pass[] = "A26YXkP73nuz";
 
 WidgetBridge bridge1(V1);
 
 BLYNK_CONNECTED() {
-bridge1.setAuthToken("xxxxx"); // Roomhub
+bridge1.setAuthToken("249ab40a7c0b4cf5bb83982d82928bea"); // Roomhub
 }
 
 // We make these values volatile, as they are used in interrupt context
@@ -42,6 +42,7 @@ void setup()
   //ArduinoOTA.setHostname("xxxxxxx"); // OPTIONAL
   ArduinoOTA.begin();
   pinMode(D1, INPUT_PULLUP);
+  pinMode(D4, OUTPUT);
   attachInterrupt(digitalPinToInterrupt(D1), checkPin, CHANGE);
 }
 
