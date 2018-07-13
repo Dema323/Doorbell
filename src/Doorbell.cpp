@@ -14,9 +14,11 @@ char ssid[] = "WiFi-2.4-D4F0";
 char pass[] = "A26YXkP73nuz";
 
 WidgetBridge bridge1(V1);
+WidgetBridge bridge2(V2);
 
 BLYNK_CONNECTED() {
-bridge1.setAuthToken("249ab40a7c0b4cf5bb83982d82928bea"); // Roomhub
+bridge1.setAuthToken("7a4a7059df0c4336b5af5bfac5cd0bab"); // Roomhub
+bridge2.setAuthToken("7d24ea1e22264d179b9e4223d6936665");
 }
 
 // We make these values volatile, as they are used in interrupt context
@@ -52,18 +54,14 @@ void Doorbell()
 
     // Process the value
     if (pinValue) {
-      Blynk.virtualWrite(V4, HIGH);
       bridge1.virtualWrite(V3, HIGH);
-      bridge1.virtualWrite(V2, HIGH);
-      bridge1.virtualWrite(V5, HIGH);
+      bridge2.virtualWrite(V11, HIGH);
       digitalWrite(D4, HIGH);
       delay(1000);
       digitalWrite(D4, LOW);
     }else{
-    Blynk.virtualWrite(V4, LOW);
     bridge1.virtualWrite(V3, LOW);
-    bridge1.virtualWrite(V2,LOW);
-    bridge1.virtualWrite(V5, LOW);
+    bridge2.virtualWrite(V11, LOW);
     }
 
     // Clear the mark, as we have processed the value
